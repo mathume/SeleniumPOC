@@ -6,8 +6,13 @@ using OpenQA.Selenium;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
-    class ConfluenceDashboard : PageObjectForFactory
+    class PageObjectForFactory
     {
-        public ConfluenceDashboard(IWebDriver driver) : base(driver) { }
+        protected IWebDriver driver;
+
+        public PageObjectForFactory(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
     }
 }

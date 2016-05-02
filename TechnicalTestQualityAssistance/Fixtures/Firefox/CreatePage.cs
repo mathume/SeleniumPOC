@@ -6,7 +6,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace TechnicalTestQualityAssistance.Fixtures.Firefox
 {
-    public class CreatePage : Fixtures.CreatePage
+    class CreatePage : Fixtures.CreatePage
     {
         public CreatePage() : base(new FirefoxDriver()) { }
     }

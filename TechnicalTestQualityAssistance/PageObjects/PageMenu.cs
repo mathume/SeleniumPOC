@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OpenQA.Selenium;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
-    class ConfluenceDashboard : PageObjectForFactory
+    class PageMenu
     {
-        public ConfluenceDashboard(IWebDriver driver) : base(driver) { }
+        internal void Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

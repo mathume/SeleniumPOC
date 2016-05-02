@@ -11,5 +11,20 @@ namespace TechnicalTestQualityAssistance.PageObjects
         {
             throw new NotImplementedException();
         }
+
+        internal void CreatePage()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal PageObject Next<PageObject>() where PageObject : class
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void CreatePage(string pageTitle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

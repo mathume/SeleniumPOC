@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OpenQA.Selenium;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
-    class ConfluenceDashboard : PageObjectForFactory
+    internal class Page
     {
-        public ConfluenceDashboard(IWebDriver driver) : base(driver) { }
+        public object MainHeader { get; set; }
+
+        public PageMenu Menu { get; private set; }
     }
 }

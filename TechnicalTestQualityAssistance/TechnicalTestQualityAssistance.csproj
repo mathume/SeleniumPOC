@@ -50,15 +50,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fixtures\Chrome\CreatePage.cs" />
     <Compile Include="Fixtures\CreatePage.cs" />
     <Compile Include="Fixtures\Firefox\CreatePage.cs" />
+    <Compile Include="Fixtures\FixtureBaseWithLogin.cs" />
     <Compile Include="PageObjects\ConfluenceDashboard.cs" />
     <Compile Include="PageObjects\Header.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
+    <Compile Include="PageObjects\Page.cs" />
+    <Compile Include="PageObjects\PageMenu.cs" />
+    <Compile Include="PageObjects\PageObjectForFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.21.0.0\content\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

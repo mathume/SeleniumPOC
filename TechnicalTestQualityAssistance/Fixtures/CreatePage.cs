@@ -10,34 +10,26 @@ using TechnicalTestQualityAssistance.PageObjects;
 namespace TechnicalTestQualityAssistance.Fixtures
 {
     [TestFixture]
-    public abstract class CreatePage
+    abstract class CreatePage : FixtureBaseWithLogin
     {
-        protected IWebDriver driver { get; set; }
-
-        public CreatePage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
-
-        [TestFixtureSetUp]
-        public void Login()
-        {
-            this.driver.Navigate().GoToUrl("mathume.atlassian.net/login");
-            var loginPage = PageFactory.InitElements<LoginPage>(this.driver);
-            loginPage.Login("lwalsh", "82++lwalsh");
-            Assert.That(loginPage.Next<ConfluenceDashboard>(), Is.Not.Null, "Couldn't login.");
-            this.
-        }
-
-        [TestFixtureTearDown]
-        public void Logout()
-        {
-
-        }
+        private Page currentPage;
+        
+        public CreatePage(IWebDriver driver) : base(driver) { }
 
         [Test]
         public void NewPageIsDisplayedAfterCreation()
         {
+            var newPageTitle = "new title" + Guid.NewGuid();
+            var header = PageFactory.InitElements<Header>(this.driver);
+            header.CreatePage(newPageTitle);
+            this.currentPage = header.Next<Page>();
+            Assert.That(currentPage.MainHeader, Is.EqualTo(newPageTitle));
+        }
+
+        [TearDown]
+        public void DeleteCreatedPage()
+        {
+            //this.currentPage.Menu.Delete();
         }
     }
 }
