@@ -13,12 +13,14 @@ namespace TechnicalTestQualityAssistance.Fixtures
     abstract class FixtureBaseWithLogin
     {
         protected IWebDriver driver;
+        private const double implicitTimeOutInSeconds = 10;
         public FixtureBaseWithLogin(IWebDriver driver)
         {
             this.driver = driver;
+            this.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(implicitTimeOutInSeconds));
         }
 
-        [OneTimeSetUp]
+        [TestFixtureSetUp]
         public void Login()
         {
             this.driver.Navigate().GoToUrl("https://mathume.atlassian.net/wiki/display/TEC");
@@ -27,23 +29,16 @@ namespace TechnicalTestQualityAssistance.Fixtures
             Assert.That(loginPage.Next<ConfluenceDashboard>(), Is.Not.Null, "Couldn't login.");
         }
 
-
-        [Test]
-        public void CanLogin()
-        {
-        }
-
         [TearDown]
         public void CloseCurrentWindow()
         {
             this.driver.Close();
         }
 
-        [OneTimeTearDown]
+        [TestFixtureTearDown]
         public void CloseDriver()
         {
             this.driver.Quit();
         }
-
     }
 }

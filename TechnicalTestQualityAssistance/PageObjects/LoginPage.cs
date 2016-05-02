@@ -9,8 +9,6 @@ namespace TechnicalTestQualityAssistance.PageObjects
 {
     class LoginPage : PageObjectForFactory
     {
-        private List<object> nextPages = new List<object>();
-
         [FindsBy(How = How.Id)]
         private IWebElement username;
 
@@ -28,17 +26,6 @@ namespace TechnicalTestQualityAssistance.PageObjects
             this.password.SendKeys(password);
             this.login.Click();
             this.Add<ConfluenceDashboard>();
-        }
-
-        private void Add<T>() where T : class
-        {
-            this.nextPages.Add(PageFactory.InitElements<T>(this.driver));
-        }
-
-        internal PageObject Next<PageObject>() where PageObject : class
-        {
-            return (PageObject)this.nextPages.FirstOrDefault(
-                p => p.GetType() == typeof(PageObject));
         }
     }
 }

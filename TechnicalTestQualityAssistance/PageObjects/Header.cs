@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
-    class Header
+    class Header : PageObjectForFactory
     {
+        public Header(IWebDriver driver) : base(driver) { }
+
+        [FindsBy(How = How.Id, Using = "quick-create-page-button")]
+        private IWebElement quickCreatePageButton;
+
         public void Logout()
         {
             throw new NotImplementedException();
         }
 
-        internal void CreatePage()
+        internal void CreatePage(string title)
         {
-            throw new NotImplementedException();
-        }
-
-        internal PageObject Next<PageObject>() where PageObject : class
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void CreatePage(string pageTitle)
-        {
-            throw new NotImplementedException();
+            quickCreatePageButton.Click();
+            var page = PageFactory.InitElements<Page>(this.driver);
+            
+            page.SetTitle(title);
+            page.Save();
+            this.Add(page);
         }
     }
 }

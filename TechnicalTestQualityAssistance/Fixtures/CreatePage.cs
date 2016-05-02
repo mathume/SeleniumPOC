@@ -23,13 +23,21 @@ namespace TechnicalTestQualityAssistance.Fixtures
             var header = PageFactory.InitElements<Header>(this.driver);
             header.CreatePage(newPageTitle);
             this.currentPage = header.Next<Page>();
-            Assert.That(currentPage.MainHeader, Is.EqualTo(newPageTitle));
+            
+            Assert.That(currentPage.Title, Is.EqualTo(newPageTitle));
         }
 
         [TearDown]
         public void DeleteCreatedPage()
         {
-            //this.currentPage.Menu.Delete();
+            try
+            {
+                this.currentPage.Menu.Delete();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Couldn't delete current page. " + e.Message);
+            }
         }
     }
 }
