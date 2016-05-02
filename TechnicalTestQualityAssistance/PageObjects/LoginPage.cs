@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TechnicalTestQualityAssistance.TestData;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -20,12 +21,17 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         public LoginPage(IWebDriver driver) : base(driver) { }
         
-        internal void Login(string username, string password)
+        internal void Login(User login)
         {
-            this.username.SendKeys(username);
-            this.password.SendKeys(password);
+            this.username.SendKeys(login.Username);
+            this.password.SendKeys(login.Password);
             this.login.Click();
             this.Add<ConfluenceDashboard>();
+        }
+
+        internal void Navigate()
+        {
+            this.driver.Navigate().GoToUrl(Urls.TestSpaceUrl);
         }
     }
 }

@@ -14,10 +14,11 @@ namespace TechnicalTestQualityAssistance.PageObjects
         [FindsBy(How = How.Id, Using = "quick-create-page-button")]
         private IWebElement quickCreatePageButton;
 
-        public void Logout()
-        {
-            throw new NotImplementedException();
-        }
+        [FindsBy(How = How.Id, Using = "user-menu-link")]
+        private IWebElement userMenu;
+
+        [FindsBy(How = How.Id, Using = "logout-link")]
+        private IWebElement logoutItem;
 
         internal void CreatePage(string title)
         {
@@ -27,6 +28,14 @@ namespace TechnicalTestQualityAssistance.PageObjects
             page.SetTitle(title);
             page.Save();
             this.Add(page);
+        }
+
+        internal void Logout()
+        {
+            this.userMenu.Click();
+            this.logoutItem.Click();
+            var confirmationPage = PageFactory.InitElements<LogoutConfirmationPage>(this.driver);
+            confirmationPage.Confirm();
         }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FirstWebDriver.PageObjects
+namespace TechnicalTestQualityAssistance.Enums
 {
-    public interface IAvailablePage
+    enum Restrictions
     {
-        bool IsAvailable { get; set; }
+        ViewOnly
     }
 }

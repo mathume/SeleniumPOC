@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -12,7 +13,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
     {
         public Page(IWebDriver driver) : base(driver) 
         {
-            this.Menu = PageFactory.InitElements<PageActionMenu>(this.driver);
+            this.ActionMenu = PageFactory.InitElements<PageActionMenu>(this.driver);
         }
 
         [FindsBy(How = How.Id, Using = "content-title")]
@@ -31,21 +32,21 @@ namespace TechnicalTestQualityAssistance.PageObjects
             }
         }
 
-        public IWebElement ConfirmButton
-        {
-            get
-            {
-                return this.confirmButton;
-            }
-        }
-
         [FindsBy(How = How.Id, Using = "rte-button-publish")]
         private IWebElement saveButton;
 
-        [FindsBy(How = How.Id, Using = "confirm")]
-        private IWebElement confirmButton;
+        [FindsBy(How = How.Id, Using = "editPageLink")]
+        private IWebElement editButton;
 
-        public PageActionMenu Menu { get; private set; }
+        public bool CanEdit
+        {
+            get
+            {
+                return this.driver.FindElements(By.Id("editPageLink")).Count == 0;
+            }
+        }
+
+        public PageActionMenu ActionMenu { get; private set; }
 
         internal void SetTitle(string title)
         {
@@ -56,7 +57,13 @@ namespace TechnicalTestQualityAssistance.PageObjects
         internal void Save()
         {
             this.saveButton.Click();
+            
             this.Add(this);
+        }
+
+        internal void Navigate(string url)
+        {
+            this.driver.Navigate().GoToUrl(url);
         }
     }
 }

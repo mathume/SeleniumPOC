@@ -32,7 +32,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
         {
             try
             {
-                this.currentPage.Menu.Delete();
+                this.currentPage.ActionMenu.Delete();
             }
             catch (Exception e)
             {
