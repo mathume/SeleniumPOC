@@ -9,4 +9,4 @@ Issues found:
 I wasn't able to handle errors while comunicating with the server
  a.) after clicking Save on a page
  b.) after clicking Apply on restrictions setting dialog of a page
-This should be handled, too, but I didn't know how and time is scarce.
+I should handle this in the future, too.
