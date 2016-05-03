@@ -25,7 +25,6 @@ namespace TechnicalTestQualityAssistance.Fixtures
         [Test]
         public void CheckSetViewOnlyRestrictionsForUser()
         {
-            this.CreateTestPage();
             this.SetViewOnlyRestrictionsForUser(Users.UserWithoutAccessToTestPage);
             this.Logout();
             this.LoginAsUser(Users.UserWithoutAccessToTestPage);
