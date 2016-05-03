@@ -39,5 +39,16 @@ namespace TechnicalTestQualityAssistance.Fixtures
 
             Assert.That(currentPage.Title, Is.EqualTo(newPageTitle));
         }
+
+        [Test]
+        public void NewPageCanBeEdited()
+        {
+            var newPageTitle = "new title" + Guid.NewGuid();
+            var header = PageFactory.InitElements<Header>(this.driver);
+            header.CreatePage(newPageTitle);
+            this.currentPage = PageFactory.InitElements<Page>(this.driver);
+
+            Assert.That(this.currentPage.CanEdit, Is.True);
+        }
     }
 }
