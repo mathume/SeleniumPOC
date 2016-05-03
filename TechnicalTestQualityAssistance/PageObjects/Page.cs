@@ -61,8 +61,6 @@ namespace TechnicalTestQualityAssistance.PageObjects
         internal void Save()
         {
             this.saveButton.Click();
-            
-            this.Add(this);
         }
 
         internal void SaveAndWaitForTitle()

@@ -28,7 +28,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
         public void Login()
         {
             this.LoginAsUser(Users.UserWithCreatePagePermission);
-            var dashboard = this.loginPage.Next<ConfluenceDashboard>();
+            var dashboard = PageFactory.InitElements<ConfluenceDashboard>(this.driver);
             Assert.That(dashboard, Is.Not.Null);
             Assert.That(dashboard.Page.Title, Is.Not.Null.Or.Empty);
         }

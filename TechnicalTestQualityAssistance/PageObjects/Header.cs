@@ -32,7 +32,6 @@ namespace TechnicalTestQualityAssistance.PageObjects
             var page = PageFactory.InitElements<Page>(this.driver);
             page.SetTitle(title);
             page.SaveAndWaitForTitle();
-            this.Add(page);
         }
 
         internal void Logout()

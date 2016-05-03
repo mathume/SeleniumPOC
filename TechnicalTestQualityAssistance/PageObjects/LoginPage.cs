@@ -26,7 +26,6 @@ namespace TechnicalTestQualityAssistance.PageObjects
             this.username.SendKeys(login.Username);
             this.password.SendKeys(login.Password);
             this.login.Click();
-            this.Add<ConfluenceDashboard>();
         }
 
         internal void Navigate()

@@ -22,7 +22,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
             var newPageTitle = "new title" + Guid.NewGuid();
             var header = PageFactory.InitElements<Header>(this.driver);
             header.CreatePage(newPageTitle);
-            this.currentPage = header.Next<Page>();
+            this.currentPage = PageFactory.InitElements<Page>(this.driver);
             
             Assert.That(currentPage.Title, Is.EqualTo(newPageTitle));
         }
