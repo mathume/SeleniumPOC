@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drivers\DriverProvider.cs" />
     <Compile Include="Extensions\WebDriverExtensions.cs" />
     <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="Fixtures\Chrome\CreatePage.cs" />
