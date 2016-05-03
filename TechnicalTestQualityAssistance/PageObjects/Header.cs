@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using TechnicalTestQualityAssistance.Extensions;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -36,8 +37,9 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         internal void Logout()
         {
-            var clickableUserMenu = this.userMenu.FindElement(By.TagName("img"));
-            clickableUserMenu.ClickWithDelta(this.driver, 0, -1);
+            Waits.DefaultExplicitWait(this.driver).Until(ExpectedConditions.ElementIsVisible(By.Id(userMenuId)));
+            this.userMenu.GetParent().Click();
+            Waits.DefaultExplicitWait(this.driver).Until(ExpectedConditions.ElementToBeClickable(this.logoutItem));
             this.logoutItem.Click();
             var confirmationPage = PageFactory.InitElements<LogoutConfirmationPage>(this.driver);
             confirmationPage.Confirm();

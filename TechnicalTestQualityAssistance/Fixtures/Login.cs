@@ -15,5 +15,12 @@ namespace TechnicalTestQualityAssistance.Fixtures
 
         [Test]
         public void CanLogin() { }
+
+        [Test]
+        public void CanLogout()
+        {
+            var header = PageFactory.InitElements<Header>(this.driver);
+            header.Logout();
+        }
     }
 }

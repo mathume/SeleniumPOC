@@ -27,5 +27,10 @@ namespace TechnicalTestQualityAssistance.Extensions
                 .Click();
             action.Perform();
         }
+
+        public static IWebElement GetParent(this IWebElement element)
+        {
+            return element.FindElement(By.XPath(".."));
+        }
     }
 }

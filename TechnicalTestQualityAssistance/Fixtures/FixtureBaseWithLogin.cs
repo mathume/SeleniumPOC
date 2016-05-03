@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using TechnicalTestQualityAssistance.PageObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {
@@ -14,12 +15,11 @@ namespace TechnicalTestQualityAssistance.Fixtures
     abstract class FixtureBaseWithLogin
     {
         protected IWebDriver driver;
-        private const double implicitTimeOutInSeconds = 10;
         protected LoginPage loginPage;
         public FixtureBaseWithLogin(IWebDriver driver)
         {
             this.driver = driver;
-            this.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(implicitTimeOutInSeconds));
+            this.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(Waits.DefaultImplicitWaitInSeconds));
             this.driver.Manage().Window.Maximize();
             this.loginPage = PageFactory.InitElements<LoginPage>(this.driver);
         }

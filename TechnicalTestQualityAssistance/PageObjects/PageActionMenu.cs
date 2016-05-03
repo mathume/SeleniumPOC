@@ -31,12 +31,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         private void Click(IWebElement menuItem)
         {
-            if (this.removeAction.Size.IsEmpty)
-            {
-                this.actionMenuButton.Click();
-            }
-
-            menuItem.Click();
+            this.ClickAndToggleIfNecessary(this.actionMenuButton, menuItem);
         }
 
         internal void SetRestrictions(TestData.User user, Enums.Restrictions restrictions)

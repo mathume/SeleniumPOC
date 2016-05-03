@@ -79,6 +79,7 @@
     <Compile Include="TestData\User.cs" />
     <Compile Include="TestData\Users.cs" />
     <Compile Include="TestData\Urls.cs" />
+    <Compile Include="Timing\Waits.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

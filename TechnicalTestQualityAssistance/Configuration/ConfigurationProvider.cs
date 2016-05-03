@@ -11,12 +11,6 @@ namespace TechnicalTestQualityAssistance.Configuration
     {
         private static ConfigurationProvider _instance = null;
         
-        private ConfigurationProvider(NameValueCollection logins, NameValueCollection urls)
-        {
-            this.Logins = logins;
-            this.Urls = urls;
-        }
-        
         public static ConfigurationProvider Instance
         {
             get
@@ -25,7 +19,11 @@ namespace TechnicalTestQualityAssistance.Configuration
                 {
                     var logins = ConfigurationManager.GetSection("Logins") as NameValueCollection;
                     var urls = ConfigurationManager.GetSection("Urls") as NameValueCollection;
-                    _instance = new ConfigurationProvider(logins, urls);
+                    var waits = ConfigurationManager.GetSection("Waits") as NameValueCollection;
+                    _instance = new ConfigurationProvider();
+                    _instance.Logins = logins;
+                    _instance.Urls = urls;
+                    _instance.Waits = waits;
                 }
 
                 return _instance;
@@ -35,5 +33,7 @@ namespace TechnicalTestQualityAssistance.Configuration
         public NameValueCollection Logins { get; private set; }
 
         public NameValueCollection Urls { get; private set; }
+
+        public NameValueCollection Waits { get; private set; }
     }
 }
