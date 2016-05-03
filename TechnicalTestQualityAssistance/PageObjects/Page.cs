@@ -42,7 +42,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
         {
             get
             {
-                WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+                var wait = Waits.DefaultExplicitWait(this.driver);
                 this.title_text = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleTextId)));
                 return this.title_text.Text;
             }
@@ -63,7 +63,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
         internal void SaveAndWaitForTitle()
         {
             this.saveButton.Click();
-            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            var wait = Waits.DefaultExplicitWait(this.driver);
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleTextId)));
         }
 

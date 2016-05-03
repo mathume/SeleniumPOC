@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using TechnicalTestQualityAssistance.Enums;
 using TechnicalTestQualityAssistance.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {
@@ -94,7 +95,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
             this.page.Navigate(this.testPageUrl);
             var title = this.page.Title;
             this.page.ActionMenu.SetRestrictions(user, Restrictions.ViewOnly);
-            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            var wait = Waits.DefaultExplicitWait(this.driver);
             wait.Until(ExpectedConditions.ElementToBeClickable(this.page.title_text));
             this.driver.Navigate().Refresh();
         }

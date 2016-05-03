@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using TechnicalTestQualityAssistance.Extensions;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -20,6 +20,9 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         [FindsBy(How = How.Id, Using = "page-restrictions-dialog-save-button")]
         private IWebElement saveRestrictionsButton;
+
+        [FindsBy(How = How.ClassName, Using = "select2-input")]
+        private IWebElement usernameInput;
 
         public RestrictionsPage(IWebDriver driver)
             : base(driver)
@@ -45,17 +48,16 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         private void FillInUser(TestData.User user)
         {
-            var usernameInput = this.driver.FindElement(By.ClassName("select2-input"));
-            usernameInput.SendKeys(user.Username);
-            Thread.Sleep(500);
-            usernameInput.SendKeys(Keys.ArrowDown);
-            Thread.Sleep(100);
-            usernameInput.SendKeys(Keys.Enter);
+            this.usernameInput.SendKeys(user.Username);
+            Waits.AbsoluteWait(timeSpanInSeconds: 5);
+            this.usernameInput.SendKeys(Keys.ArrowDown);
+            Waits.AbsoluteWait(timeSpanInSeconds: 1);
+            this.usernameInput.SendKeys(Keys.Enter);
         }
 
         private void SelectPermission(Enums.Restrictions restrictions)
         {
-            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(1));
+            var wait = Waits.DefaultExplicitWait(this.driver);
             wait.Until(ExpectedConditions.ElementToBeClickable(this.pagePermissionsSelector));
             this.pagePermissionsSelector.Click();
 
@@ -88,7 +90,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         private void WaitForFocus(IWebElement element)
         {
-            var wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(2));
+            var wait = Waits.DefaultExplicitWait(this.driver);
             wait.Until(IsFocusable(element));
         }
     }
