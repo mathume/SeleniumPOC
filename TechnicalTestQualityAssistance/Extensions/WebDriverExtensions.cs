@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using System;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.Extensions
 {
@@ -15,6 +18,12 @@ namespace TechnicalTestQualityAssistance.Extensions
         {
             var action = new Actions(driver);
             action.SendKeys(keys).Perform();
+        }
+
+        public static bool OneElementExists(this IWebDriver driver, By uniqueLocator)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Waits.DefaultNotFoundExplicitWaitInSeconds));
+            return wait.Until(d => d.FindElements(uniqueLocator)).Count == 1;
         }
     }
 }

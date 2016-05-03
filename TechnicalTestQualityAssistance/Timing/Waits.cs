@@ -10,6 +10,8 @@ namespace TechnicalTestQualityAssistance.Timing
 
         public const int DefaultImplicitWaitInSeconds = 10;
 
+        public const int DefaultNotFoundExplicitWaitInSeconds = 3;
+
         public static WebDriverWait DefaultExplicitWait(IWebDriver driver)
         {
             return new WebDriverWait(driver, TimeSpan.FromSeconds(DefaultExplicitWaitInSeconds));

@@ -3,6 +3,8 @@ using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using TechnicalTestQualityAssistance.Extensions;
+using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -32,7 +34,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
         {
             get
             {
-                return this.driver.FindElements(By.Id("editButtonId")).Count() == 1;
+                return this.driver.OneElementExists(By.Id(editButtonId));
             }
         }
 

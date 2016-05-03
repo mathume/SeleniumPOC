@@ -22,7 +22,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
         }
 
         [Test]
-        public void CanSetViewOnlyRestrictionsForUser()
+        public void CheckSetViewOnlyRestrictionsForUser()
         {
             this.CreateTestPage();
             this.SetViewOnlyRestrictionsForUser(Users.UserWithoutAccessToTestPage);
@@ -34,7 +34,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
         }
 
         [Test]
-        public void CheckSetViewOnlyRestrictionsForUser()
+        public void CanSetViewOnlyRestrictionsForUser()
         {
             this.SetViewOnlyRestrictionsForUser(Users.UserWithoutAccessToTestPage);
         }
@@ -49,6 +49,22 @@ namespace TechnicalTestQualityAssistance.Fixtures
         public void TearDown()
         {
             this.Logout();
+            this.TryDeletePage();
+        }
+
+        private void TryDeletePage()
+        {
+            try
+            {
+                this.LoginAsUser(Users.UserWithCreatePagePermission);
+                this.driver.Navigate().GoToUrl(this.testPageUrl);
+                var testPage = PageFactory.InitElements<Page>(this.driver);
+                testPage.ActionMenu.Delete();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Couldn't delete created page. " + e.Message);
+            }
         }
 
         private void AssertThatUserCannotEditPage(User user, Page page)
