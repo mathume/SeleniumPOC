@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="Fixtures\Chrome\CreatePage.cs" />
     <Compile Include="Fixtures\Chrome\Login.cs" />
     <Compile Include="Fixtures\CreatePage.cs" />

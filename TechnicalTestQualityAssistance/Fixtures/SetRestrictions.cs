@@ -8,6 +8,7 @@ using TechnicalTestQualityAssistance.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
 using TechnicalTestQualityAssistance.Enums;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {
@@ -59,7 +60,10 @@ namespace TechnicalTestQualityAssistance.Fixtures
         {
             
             this.page.Navigate(this.testPageUrl);
+            var title = this.page.Title;
             this.page.ActionMenu.SetRestrictions(user, Restrictions.ViewOnly);
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.ElementToBeClickable(this.page.title_text));
         }
 
         private void AssertThatUserCannotEditPage(User user, Page page)

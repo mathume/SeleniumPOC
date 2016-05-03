@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -32,7 +33,9 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         internal void Logout()
         {
-            this.userMenu.Click();
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.ElementToBeClickable(this.userMenu));
+            this.userMenu.FindElement(By.TagName("img")).Click();
             this.logoutItem.Click();
             var confirmationPage = PageFactory.InitElements<LogoutConfirmationPage>(this.driver);
             confirmationPage.Confirm();
