@@ -49,7 +49,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
         private void FillInUser(TestData.User user)
         {
             this.usernameInput.SendKeys(user.Username);
-            Waits.AbsoluteWait(timeSpanInSeconds: 5);
+            Waits.AbsoluteWait(timeSpanInSeconds: 1);
             this.usernameInput.SendKeys(Keys.ArrowDown);
             Waits.AbsoluteWait(timeSpanInSeconds: 1);
             this.usernameInput.SendKeys(Keys.Enter);
