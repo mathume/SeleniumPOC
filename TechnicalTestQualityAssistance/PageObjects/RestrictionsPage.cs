@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using TechnicalTestQualityAssistance.Extensions;
 using System.Threading;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -38,8 +39,19 @@ namespace TechnicalTestQualityAssistance.PageObjects
                     break;
             }
 
-            pagePermissionsSelector.SendKeys(Keys.ArrowDown, downTimes);
+            this.driver.GlobalSendKeys(Keys.ArrowDown, downTimes);
 
+        }
+
+        private void WaitForFocus(IWebElement element)
+        {
+            var wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(2));
+            wait.Until(IsFocusable(element));
+        }
+
+        private static Func<IWebDriver, bool> IsFocusable(IWebElement element)
+        {
+            return d => d.SwitchTo().ActiveElement() == element;
         }
 
         [FindsBy(How = How.Id, Using = "page-restrictions-add-button")]
@@ -67,8 +79,8 @@ namespace TechnicalTestQualityAssistance.PageObjects
                     break;
             }
 
-            this.restrictionOptionsDropDown.SendKeys(Keys.ArrowDown, downTimes);
-            this.restrictionOptionsDropDown.SendKeys(Keys.Enter);
+            this.driver.GlobalSendKeys(Keys.ArrowDown, downTimes);
+            this.driver.GlobalSendKeys(Keys.Enter);
         }
 
         [FindsBy(How = How.Id, Using = "page-restrictions-dialog-save-button")]

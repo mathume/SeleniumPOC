@@ -24,25 +24,19 @@ namespace TechnicalTestQualityAssistance.Fixtures
             this.header = PageFactory.InitElements<Header>(this.driver);
         }
 
-        private void CreatePage()
+        private void CreateTestPage()
         {
             var title = "new page" + Guid.NewGuid();
             var dashboard = PageFactory.InitElements<ConfluenceDashboard>(this.driver);
             this.header = dashboard.Header;
             this.header.CreatePage(title);
-            if (!this.driver.Url.Contains(title.Replace(" ", "+")))
-            {
-                var page = dashboard.Header.Next<Page>();
-                page.SetTitle(title);
-                page.Save();
-            }
             this.testPageUrl = this.driver.Url;
         }
 
         [Test]
         public void CheckSetRestrictions()
         {
-            this.CreatePage();
+            this.CreateTestPage();
             this.SetViewOnlyRestrictionsForUser(Users.UserWithoutAccessToTestPage);
             this.Logout();
             this.LoginAsUser(Users.UserWithoutAccessToTestPage);

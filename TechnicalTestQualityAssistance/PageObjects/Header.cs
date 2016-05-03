@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using TechnicalTestQualityAssistance.Extensions;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
@@ -15,10 +16,14 @@ namespace TechnicalTestQualityAssistance.PageObjects
         [FindsBy(How = How.Id, Using = "quick-create-page-button")]
         private IWebElement quickCreatePageButton;
 
-        [FindsBy(How = How.Id, Using = "user-menu-link")]
+        private const string userMenuId = "user-menu-link";
+
+        [FindsBy(How = How.Id, Using = userMenuId)]
         private IWebElement userMenu;
 
-        [FindsBy(How = How.Id, Using = "logout-link")]
+        private const string logoutItemId = "logout-link";
+
+        [FindsBy(How = How.Id, Using = logoutItemId)]
         private IWebElement logoutItem;
 
         internal void CreatePage(string title)
@@ -28,14 +33,16 @@ namespace TechnicalTestQualityAssistance.PageObjects
             
             page.SetTitle(title);
             page.Save();
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.TextToBePresentInElement(page.title_text, title));
             this.Add(page);
         }
 
         internal void Logout()
         {
-            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
-            wait.Until(ExpectedConditions.ElementToBeClickable(this.userMenu));
-            this.userMenu.FindElement(By.TagName("img")).Click();
+            var clickableUserMenu = this.userMenu.FindElement(By.TagName("img"));
+            var wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(1));
+            clickableUserMenu.ClickWithDelta(this.driver, 5, 0);
             this.logoutItem.Click();
             var confirmationPage = PageFactory.InitElements<LogoutConfirmationPage>(this.driver);
             confirmationPage.Confirm();

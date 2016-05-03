@@ -20,6 +20,7 @@ namespace TechnicalTestQualityAssistance.Fixtures
         {
             this.driver = driver;
             this.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(implicitTimeOutInSeconds));
+            this.driver.Manage().Window.Maximize();
             this.loginPage = PageFactory.InitElements<LoginPage>(this.driver);
         }
 

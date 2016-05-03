@@ -50,9 +50,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\WebDriverExtensions.cs" />
     <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="Fixtures\Chrome\CreatePage.cs" />
     <Compile Include="Fixtures\Chrome\Login.cs" />
+    <Compile Include="Fixtures\Chrome\SetRestrictions.cs" />
     <Compile Include="Fixtures\CreatePage.cs" />
     <Compile Include="Fixtures\Firefox\CreatePage.cs" />
     <Compile Include="Fixtures\Firefox\Login.cs" />

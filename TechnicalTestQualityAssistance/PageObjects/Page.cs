@@ -37,14 +37,16 @@ namespace TechnicalTestQualityAssistance.PageObjects
         [FindsBy(How = How.Id, Using = "rte-button-publish")]
         private IWebElement saveButton;
 
-        [FindsBy(How = How.Id, Using = "editPageLink")]
+        private const string editButtonId = "editPageLink";
+
+        [FindsBy(How = How.Id, Using = editButtonId)]
         private IWebElement editButton;
 
         public bool CanEdit
         {
             get
             {
-                return this.driver.FindElements(By.Id("editPageLink")).Count == 0;
+                return this.driver.FindElements(By.Id("editButtonId")).Count() == 1;
             }
         }
 
