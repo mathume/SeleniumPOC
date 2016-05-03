@@ -19,17 +19,17 @@ namespace TechnicalTestQualityAssistance.PageObjects
         [FindsBy(How = How.Id, Using = "content-title")]
         private IWebElement title;
 
-        [FindsBy(How = How.Id, Using = titleId)]
+        [FindsBy(How = How.Id, Using = titleTextId)]
         public IWebElement title_text { get; private set; }
 
-        private const string titleId = "title-text";
+        private const string titleTextId = "title-text";
 
         public string Title
         {
             get
             {
                 WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-                this.title_text = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleId)));
+                this.title_text = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleTextId)));
                 return this.title_text.Text;
             }
         }
@@ -63,6 +63,13 @@ namespace TechnicalTestQualityAssistance.PageObjects
             this.saveButton.Click();
             
             this.Add(this);
+        }
+
+        internal void SaveAndWaitForTitle()
+        {
+            this.saveButton.Click();
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleTextId)));
         }
 
         internal void Navigate(string url)

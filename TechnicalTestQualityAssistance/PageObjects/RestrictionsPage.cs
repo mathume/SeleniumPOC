@@ -29,6 +29,8 @@ namespace TechnicalTestQualityAssistance.PageObjects
 
         private void SelectPermission(Enums.Restrictions restrictions)
         {
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(1));
+            wait.Until(ExpectedConditions.ElementToBeClickable(this.pagePermissionsSelector));
             this.pagePermissionsSelector.Click();
 
             var downTimes = 0;
@@ -64,6 +66,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
             usernameInput.SendKeys(user.Username);
             Thread.Sleep(500);
             usernameInput.SendKeys(Keys.ArrowDown);
+            Thread.Sleep(100);
             usernameInput.SendKeys(Keys.Enter);
         }
 

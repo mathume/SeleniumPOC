@@ -30,19 +30,15 @@ namespace TechnicalTestQualityAssistance.PageObjects
         {
             quickCreatePageButton.Click();
             var page = PageFactory.InitElements<Page>(this.driver);
-            
             page.SetTitle(title);
-            page.Save();
-            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
-            wait.Until(ExpectedConditions.TextToBePresentInElement(page.title_text, title));
+            page.SaveAndWaitForTitle();
             this.Add(page);
         }
 
         internal void Logout()
         {
             var clickableUserMenu = this.userMenu.FindElement(By.TagName("img"));
-            var wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(1));
-            clickableUserMenu.ClickWithDelta(this.driver, 5, 0);
+            clickableUserMenu.ClickWithDelta(this.driver, 0, -1);
             this.logoutItem.Click();
             var confirmationPage = PageFactory.InitElements<LogoutConfirmationPage>(this.driver);
             confirmationPage.Confirm();
