@@ -1,28 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
-using System.Threading;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
     internal class Page : PageObjectForFactory
     {
-        public Page(IWebDriver driver) : base(driver) 
-        {
-            this.ActionMenu = PageFactory.InitElements<PageActionMenu>(this.driver);
-        }
+        private const string editButtonId = "editPageLink";
+
+        private const string titleTextId = "title-text";
+
+        [FindsBy(How = How.Id, Using = editButtonId)]
+        private IWebElement editButton;
+
+        [FindsBy(How = How.Id, Using = "rte-button-publish")]
+        private IWebElement saveButton;
 
         [FindsBy(How = How.Id, Using = "content-title")]
         private IWebElement title;
 
-        [FindsBy(How = How.Id, Using = titleTextId)]
-        public IWebElement title_text { get; private set; }
+        public Page(IWebDriver driver)
+            : base(driver)
+        {
+            this.ActionMenu = PageFactory.InitElements<PageActionMenu>(this.driver);
+        }
+        public PageActionMenu ActionMenu { get; private set; }
 
-        private const string titleTextId = "title-text";
+        public bool CanEdit
+        {
+            get
+            {
+                return this.driver.FindElements(By.Id("editButtonId")).Count() == 1;
+            }
+        }
 
         public string Title
         {
@@ -34,28 +46,11 @@ namespace TechnicalTestQualityAssistance.PageObjects
             }
         }
 
-        [FindsBy(How = How.Id, Using = "rte-button-publish")]
-        private IWebElement saveButton;
-
-        private const string editButtonId = "editPageLink";
-
-        [FindsBy(How = How.Id, Using = editButtonId)]
-        private IWebElement editButton;
-
-        public bool CanEdit
+        [FindsBy(How = How.Id, Using = titleTextId)]
+        public IWebElement title_text { get; private set; }
+        internal void Navigate(string url)
         {
-            get
-            {
-                return this.driver.FindElements(By.Id("editButtonId")).Count() == 1;
-            }
-        }
-
-        public PageActionMenu ActionMenu { get; private set; }
-
-        internal void SetTitle(string title)
-        {
-            this.title.Clear();
-            this.title.SendKeys(title);
+            this.driver.Navigate().GoToUrl(url);
         }
 
         internal void Save()
@@ -70,10 +65,10 @@ namespace TechnicalTestQualityAssistance.PageObjects
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id(titleTextId)));
         }
 
-        internal void Navigate(string url)
+        internal void SetTitle(string title)
         {
-            this.driver.Navigate().GoToUrl(url);
+            this.title.Clear();
+            this.title.SendKeys(title);
         }
-
     }
 }

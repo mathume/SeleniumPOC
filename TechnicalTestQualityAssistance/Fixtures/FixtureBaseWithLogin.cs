@@ -1,27 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using TechnicalTestQualityAssistance.PageObjects;
 using OpenQA.Selenium.Support.PageObjects;
+using TechnicalTestQualityAssistance.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
 using TechnicalTestQualityAssistance.Timing;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {
     [TestFixture]
-    abstract class FixtureBaseWithLogin
+    internal abstract class FixtureBaseWithLogin
     {
         protected IWebDriver driver;
         protected LoginPage loginPage;
+
         public FixtureBaseWithLogin(IWebDriver driver)
         {
             this.driver = driver;
             this.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(Waits.DefaultImplicitWaitInSeconds));
             this.driver.Manage().Window.Maximize();
             this.loginPage = PageFactory.InitElements<LoginPage>(this.driver);
+        }
+
+        [TearDown]
+        public void CloseCurrentWindow()
+        {
+            this.driver.Close();
+        }
+
+        [TestFixtureTearDown]
+        public void CloseDriver()
+        {
+            this.driver.Quit();
         }
 
         [TestFixtureSetUp]
@@ -37,18 +47,6 @@ namespace TechnicalTestQualityAssistance.Fixtures
         {
             this.loginPage.Navigate();
             this.loginPage.Login(user);
-        }
-
-        [TearDown]
-        public void CloseCurrentWindow()
-        {
-            this.driver.Close();
-        }
-
-        [TestFixtureTearDown]
-        public void CloseDriver()
-        {
-            this.driver.Quit();
         }
     }
 }

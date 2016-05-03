@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using TechnicalTestQualityAssistance.Configuration;
 
 namespace TechnicalTestQualityAssistance.TestData
 {
-    class Users
+    internal class Users
     {
-        static NameValueCollection users = ConfigurationProvider.Instance.Logins;
+        private static NameValueCollection users = ConfigurationProvider.Instance.Logins;
+
         public static User UserWithCreatePagePermission
         {
             get

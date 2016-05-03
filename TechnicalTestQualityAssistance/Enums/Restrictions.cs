@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TechnicalTestQualityAssistance.Enums
+﻿namespace TechnicalTestQualityAssistance.Enums
 {
-    enum Restrictions
+    internal enum Restrictions
     {
         ViewOnly
     }

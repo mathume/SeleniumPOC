@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {
-    class LoginPage : PageObjectForFactory
+    internal class LoginPage : PageObjectForFactory
     {
         [FindsBy(How = How.Id)]
-        private IWebElement username;
+        private IWebElement login;
 
         [FindsBy(How = How.Id)]
         private IWebElement password;
 
         [FindsBy(How = How.Id)]
-        private IWebElement login;
+        private IWebElement username;
+        public LoginPage(IWebDriver driver)
+            : base(driver)
+        {
+        }
 
-        public LoginPage(IWebDriver driver) : base(driver) { }
-        
         internal void Login(User login)
         {
             this.username.SendKeys(login.Username);

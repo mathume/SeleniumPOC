@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Specialized;
 using System.Configuration;
-using System.Collections.Specialized;
 
 namespace TechnicalTestQualityAssistance.Configuration
 {
-    class ConfigurationProvider
+    internal class ConfigurationProvider
     {
         private static ConfigurationProvider _instance = null;
-        
+
         public static ConfigurationProvider Instance
         {
             get

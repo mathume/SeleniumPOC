@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechnicalTestQualityAssistance.Configuration;
-using OpenQA.Selenium.Support.UI;
-using System.Collections.Specialized;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace TechnicalTestQualityAssistance.Timing
 {
-    static class Waits
+    internal static class Waits
     {
         public const int DefaultExplicitWaitInSeconds = 10;
 
