@@ -19,7 +19,7 @@ namespace TechnicalTestQualityAssistance.PageObjects
         private IWebElement quickCreatePageButton;
 
         [FindsBy(How = How.Id, Using = userMenuId)]
-        private IWebElement userMenu;
+        private IWebElement userMenu; // is not clickable in some browsers, click on parent works
 
         public Header(IWebDriver driver)
             : base(driver)
