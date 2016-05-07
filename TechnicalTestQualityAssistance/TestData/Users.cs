@@ -1,5 +1,5 @@
 ﻿using System.Collections.Specialized;
-using TechnicalTestQualityAssistance.Configuration;
+using TecTest.Utilities.Configuration;
 
 namespace TechnicalTestQualityAssistance.TestData
 {

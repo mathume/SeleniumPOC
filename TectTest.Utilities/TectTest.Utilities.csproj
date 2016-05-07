@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E2E5E7C4-4B67-4310-A799-DCA16DC218E2}</ProjectGuid>
+    <ProjectGuid>{BF09B668-F04A-48AB-B211-46F05E3B65D0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TechnicalTestQualityAssistance</RootNamespace>
-    <AssemblyName>TechnicalTestQualityAssistance</AssemblyName>
+    <RootNamespace>TectTest.Utilities</RootNamespace>
+    <AssemblyName>TectTest.Utilities</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.2.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.2.1\lib\net40\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -51,46 +48,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fixtures\Chrome\CreatePage.cs" />
-    <Compile Include="Fixtures\Chrome\Login.cs" />
-    <Compile Include="Fixtures\Chrome\SetRestrictions.cs" />
-    <Compile Include="Fixtures\CreatePage.cs" />
-    <Compile Include="Fixtures\Firefox\CreatePage.cs" />
-    <Compile Include="Fixtures\Firefox\Login.cs" />
-    <Compile Include="Fixtures\Firefox\SetRestrictions.cs" />
-    <Compile Include="Fixtures\FixtureBaseWithLogin.cs" />
-    <Compile Include="Fixtures\Login.cs" />
-    <Compile Include="Fixtures\SetRestrictions.cs" />
-    <Compile Include="PageObjects\ConfluenceDashboard.cs" />
-    <Compile Include="PageObjects\DeleteConfirmationPage.cs" />
-    <Compile Include="PageObjects\Header.cs" />
-    <Compile Include="PageObjects\LoginPage.cs" />
-    <Compile Include="PageObjects\LogoutConfirmationPage.cs" />
-    <Compile Include="PageObjects\Page.cs" />
-    <Compile Include="PageObjects\PageActionMenu.cs" />
-    <Compile Include="PageObjects\PageObjectForFactory.cs" />
-    <Compile Include="PageObjects\RestrictionsPage.cs" />
+    <Compile Include="Configuration\ConfigurationProvider.cs" />
+    <Compile Include="Drivers\DriverProvider.cs" />
+    <Compile Include="Extensions\WebDriverExtensions.cs" />
+    <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Enums\Restrictions.cs" />
-    <Compile Include="TestData\User.cs" />
-    <Compile Include="TestData\Users.cs" />
-    <Compile Include="TestData\Urls.cs" />
+    <Compile Include="Timing\Waits.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.21.0.0\content\chromedriver.exe">
-      <Link>chromedriver.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TectTest.Utilities\TectTest.Utilities.csproj">
-      <Project>{BF09B668-F04A-48AB-B211-46F05E3B65D0}</Project>
-      <Name>TectTest.Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

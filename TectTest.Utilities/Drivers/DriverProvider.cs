@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace TechnicalTestQualityAssistance.Drivers
+namespace TecTest.Utilities.Drivers
 {
-    internal static class DriverProvider
+    public static class DriverProvider
     {
         public static IWebDriver New<T>() where T : IWebDriver, new()
         {

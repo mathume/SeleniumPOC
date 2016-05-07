@@ -3,11 +3,11 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using System.Collections.Specialized;
-using TechnicalTestQualityAssistance.Configuration;
+using TecTest.Utilities.Configuration;
 
-namespace TechnicalTestQualityAssistance.Timing
+namespace TecTest.Utilities.Timing
 {
-    internal static class Waits
+    public static class Waits
     {
         private static NameValueCollection waits = ConfigurationProvider.Instance.Waits;
 

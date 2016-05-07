@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using TechnicalTestQualityAssistance.Timing;
+using TecTest.Utilities.Timing;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {

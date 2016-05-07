@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
-using TechnicalTestQualityAssistance.Drivers;
+using TecTest.Utilities.Drivers;
 
 namespace TechnicalTestQualityAssistance.Fixtures.Chrome
 {

@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using TechnicalTestQualityAssistance.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
-using TechnicalTestQualityAssistance.Timing;
+using TecTest.Utilities.Timing;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {

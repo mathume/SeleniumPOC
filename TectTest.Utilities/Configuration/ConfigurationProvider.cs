@@ -1,9 +1,9 @@
 ﻿using System.Collections.Specialized;
 using System.Configuration;
 
-namespace TechnicalTestQualityAssistance.Configuration
+namespace TecTest.Utilities.Configuration
 {
-    internal class ConfigurationProvider
+    public class ConfigurationProvider
     {
         private static ConfigurationProvider _instance = null;
 

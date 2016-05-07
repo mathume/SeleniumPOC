@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace TechnicalTestQualityAssistance.Extensions
+namespace TecTest.Utilities.Extensions
 {
-    internal static class WebElementExtensions
+    public static class WebElementExtensions
     {
         public static void ClickWithDelta(this IWebElement element, IWebDriver driver, int offSetX, int offSetY)
         {

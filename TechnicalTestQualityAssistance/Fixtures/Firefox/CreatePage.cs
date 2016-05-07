@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium.Firefox;
-using TechnicalTestQualityAssistance.Drivers;
+using TecTest.Utilities.Drivers;
 
 namespace TechnicalTestQualityAssistance.Fixtures.Firefox
 {

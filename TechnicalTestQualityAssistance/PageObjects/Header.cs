@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
-using TechnicalTestQualityAssistance.Extensions;
-using TechnicalTestQualityAssistance.Timing;
+using TecTest.Utilities.Extensions;
+using TecTest.Utilities.Timing;
 
 namespace TechnicalTestQualityAssistance.PageObjects
 {

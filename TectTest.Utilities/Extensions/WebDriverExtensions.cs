@@ -2,11 +2,11 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using TechnicalTestQualityAssistance.Timing;
+using TecTest.Utilities.Timing;
 
-namespace TechnicalTestQualityAssistance.Extensions
+namespace TecTest.Utilities.Extensions
 {
-    internal static class WebDriverExtensions
+    public static class WebDriverExtensions
     {
         public static void GlobalSendKeys(this IWebDriver driver, string keys, int times)
         {

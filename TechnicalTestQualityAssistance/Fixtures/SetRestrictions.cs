@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using TechnicalTestQualityAssistance.Enums;
 using TechnicalTestQualityAssistance.PageObjects;
 using TechnicalTestQualityAssistance.TestData;
-using TechnicalTestQualityAssistance.Timing;
+using TecTest.Utilities.Timing;
 
 namespace TechnicalTestQualityAssistance.Fixtures
 {
